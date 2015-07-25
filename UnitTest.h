@@ -8,7 +8,7 @@
  **    May you find forgiveness for yourself and forgive others.
  **    May you share freely, never taking more than you give.
  **/
- 
+
 #ifndef __UNIT_TEST_H__
 #define __UNIT_TEST_H__
 
@@ -34,14 +34,18 @@ public:
     static boolean bits_in_mask(byte bits, byte mask);
 
     static boolean unique_bits(byte* values, int count);
+    static boolean unique_bits(uint16_t* values, int count);
+    static boolean unique_bits(uint32_t* values, int count);
 
     static boolean unique_values(byte* values, int count);
     static boolean unique_values(word* values, int count);
     static boolean unique_values(uint16_t* values, int count);
+    static boolean unique_values(uint32_t* values, int count);
 
     static boolean ordered_values(byte* values, int count);
     static boolean ordered_values(word* values, int count);
     static boolean ordered_values(uint16_t* values, int count);
+    static boolean ordered_values(uint32_t* values, int count);
 
     static boolean same_values(byte* values, int count);
     static boolean same_values(word* values, int count);

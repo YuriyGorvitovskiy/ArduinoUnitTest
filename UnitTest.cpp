@@ -8,7 +8,7 @@
  **    May you find forgiveness for yourself and forgive others.
  **    May you share freely, never taking more than you give.
  **/
- 
+
 #include <Arduino.h>
 #include "UnitTest.h"
 
@@ -55,6 +55,30 @@ boolean UnitTest::unique_bits(byte* values, int count) {
     return true;
 }
 
+boolean UnitTest::unique_bits(uint16_t* values, int count) {
+    for (int i = 0; i < count; ++i) {
+        if (values[i] == 0)
+            return false;
+
+        for (int j = i+1; j < count; ++j)
+            if ((values[i] & values[j]) != 0)
+                return false;
+    }
+    return true;
+}
+
+boolean UnitTest::unique_bits(uint32_t* values, int count) {
+    for (int i = 0; i < count; ++i) {
+        if (values[i] == 0)
+            return false;
+
+        for (int j = i+1; j < count; ++j)
+            if ((values[i] & values[j]) != 0)
+                return false;
+    }
+    return true;
+}
+
 boolean UnitTest::unique_values(byte* values, int count) {
     for (int i = 0; i < count; ++i)
         for (int j = i+1; j < count; ++j)
@@ -82,6 +106,15 @@ boolean UnitTest::unique_values(uint16_t* values, int count) {
     return true;
 }
 
+boolean UnitTest::unique_values(uint32_t* values, int count) {
+    for (int i = 0; i < count; ++i)
+        for (int j = i+1; j < count; ++j)
+            if (values[i] == values[j])
+                return false;
+
+    return true;
+}
+
 boolean UnitTest::ordered_values(byte* values, int count) {
     for (int i = 1; i < count; ++i) {
         if (values[i-1] > values[i])
@@ -99,6 +132,14 @@ boolean UnitTest::ordered_values(word* values, int count) {
 }
 
 boolean UnitTest::ordered_values(uint16_t* values, int count) {
+    for (int i = 1; i < count; ++i) {
+        if (values[i-1] > values[i])
+            return false;
+    }
+    return true;
+}
+
+boolean UnitTest::ordered_values(uint32_t* values, int count) {
     for (int i = 1; i < count; ++i) {
         if (values[i-1] > values[i])
             return false;
