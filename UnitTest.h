@@ -51,6 +51,8 @@ public:
     static boolean same_values(word* values, int count);
     static boolean same_values(uint16_t* values, int count);
 
+    static boolean same_values(byte* expect, byte* actual, int count);
+
     static uint16_t combine(byte a, byte b);
     static uint32_t combine(byte a, byte b, byte c);
     static uint32_t combine(byte a, byte b, byte c, byte d);

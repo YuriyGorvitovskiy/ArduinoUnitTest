@@ -171,6 +171,14 @@ boolean UnitTest::same_values(uint16_t* values, int count) {
     return true;
 }
 
+boolean UnitTest::same_values(byte* expect, byte* actual, int count) {
+    for (int i = 0; i < count; ++i) {
+        if (expect[i] != actual[i])
+            return false;
+    }
+    return true;
+}
+
 uint16_t UnitTest::combine(byte a, byte b) {
     return a | (((uint16_t)b) << 8);
 }
